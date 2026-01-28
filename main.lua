@@ -1,7 +1,6 @@
-print("SilverHub MENU TOGGLE START")
+print("SilverHub ANDROID UI START")
 
 local Players = game:GetService("Players")
-local UIS = game:GetService("UserInputService")
 local player = Players.LocalPlayer
 
 -- Hapus UI lama
@@ -15,7 +14,18 @@ gui.Name = "SilverHubUI"
 gui.ResetOnSpawn = false
 gui.Parent = player.PlayerGui
 
--- Frame utama
+-- ===== FLOATING BUTTON =====
+local floatBtn = Instance.new("TextButton", gui)
+floatBtn.Size = UDim2.new(0, 50, 0, 50)
+floatBtn.Position = UDim2.new(0, 15, 0.5, -25)
+floatBtn.Text = "≡"
+floatBtn.BackgroundColor3 = Color3.fromRGB(60, 60, 160)
+floatBtn.TextColor3 = Color3.fromRGB(255,255,255)
+floatBtn.BorderSizePixel = 0
+floatBtn.TextSize = 26
+Instance.new("UICorner", floatBtn).CornerRadius = UDim.new(1, 0)
+
+-- ===== MAIN MENU =====
 local main = Instance.new("Frame", gui)
 main.Size = UDim2.new(0, 300, 0, 200)
 main.Position = UDim2.new(0.5, -150, 0.5, -100)
@@ -34,32 +44,26 @@ title.Font = Enum.Font.GothamBold
 title.TextSize = 20
 
 -- Toggle Menu Button
-local toggleMenu = Instance.new("TextButton", main)
-toggleMenu.Size = UDim2.new(0.8, 0, 0, 50)
-toggleMenu.Position = UDim2.new(0.1, 0, 0.5, 0)
-toggleMenu.Text = "TUTUP MENU"
-toggleMenu.BackgroundColor3 = Color3.fromRGB(70, 70, 150)
-toggleMenu.TextColor3 = Color3.fromRGB(255,255,255)
-toggleMenu.BorderSizePixel = 0
-toggleMenu.Font = Enum.Font.Gotham
-toggleMenu.TextSize = 16
-Instance.new("UICorner", toggleMenu).CornerRadius = UDim.new(0, 10)
+local menuBtn = Instance.new("TextButton", main)
+menuBtn.Size = UDim2.new(0.8, 0, 0, 50)
+menuBtn.Position = UDim2.new(0.1, 0, 0.5, 0)
+menuBtn.Text = "TUTUP MENU"
+menuBtn.BackgroundColor3 = Color3.fromRGB(80, 80, 150)
+menuBtn.TextColor3 = Color3.fromRGB(255,255,255)
+menuBtn.BorderSizePixel = 0
+menuBtn.Font = Enum.Font.Gotham
+menuBtn.TextSize = 16
+Instance.new("UICorner", menuBtn).CornerRadius = UDim.new(0, 10)
 
--- Toggle logic
+-- LOGIC
 local open = true
 
-toggleMenu.MouseButton1Click:Connect(function()
+local function toggleMenu()
 	open = not open
 	main.Visible = open
-end)
+end
 
--- Keybind toggle (RightShift)
-UIS.InputBegan:Connect(function(input, gp)
-	if gp then return end
-	if input.KeyCode == Enum.KeyCode.RightShift then
-		open = not open
-		main.Visible = open
-	end
-end)
+floatBtn.MouseButton1Click:Connect(toggleMenu)
+menuBtn.MouseButton1Click:Connect(toggleMenu)
 
-print("SilverHub MENU TOGGLE LOADED")
+print("SilverHub ANDROID UI LOADED")
