@@ -17,7 +17,7 @@ LoaderTab:AddButton({
     Description = "Auto Fish • Auto Reel • AFK",
     Callback = function()
         loadstring(game:HttpGet(
-            "https://raw.githubusercontent.com/silverhub/amabar49-boop/main/fishit.lua"
+            "https://raw.githubusercontent.com/amabar49-boop/silverhub/main/fishit.lua"
         ))()
     end
 })
