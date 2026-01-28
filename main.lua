@@ -1,44 +1,15 @@
--- Load Obsidian Library
-local Obsidian = loadstring(game:HttpGet(
-    "https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Obsidian.lua"
-))()
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
 
--- Create Window
-local Window = Obsidian:CreateWindow({
-    Title = "SilverHub | Fish It",
-    Footer = "by amabar49-boop",
-    ToggleKey = Enum.KeyCode.RightControl
-})
+local gui = Instance.new("ScreenGui")
+gui.Name = "DebugGui"
+gui.Parent = player:WaitForChild("PlayerGui")
 
--- Create Tab
-local MainTab = Window:AddTab({
-    Title = "Main",
-    Icon = "fish"
-})
-
--- Section
-local MainSection = MainTab:AddSection({
-    Title = "Fish It"
-})
-
--- Button
-MainSection:AddButton({
-    Title = "Test Button",
-    Description = "Cek apakah UI muncul",
-    Callback = function()
-        Obsidian:Notify({
-            Title = "SilverHub",
-            Content = "UI Obsidian berhasil muncul ✅",
-            Duration = 3
-        })
-    end
-})
-
--- Toggle
-MainSection:AddToggle({
-    Title = "Auto Fish (Dummy)",
-    Default = false,
-    Callback = function(v)
-        print("Auto Fish:", v)
-    end
-})
+local text = Instance.new("TextLabel")
+text.Size = UDim2.new(0, 300, 0, 100)
+text.Position = UDim2.new(0.5, -150, 0.5, -50)
+text.Text = "MAIN LUA JALAN ✅"
+text.TextScaled = true
+text.BackgroundColor3 = Color3.fromRGB(25,25,25)
+text.TextColor3 = Color3.new(1,1,1)
+text.Parent = gui
