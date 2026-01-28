@@ -2,7 +2,7 @@
 -- Versi UI kosong dari Obsidian Example.lua
 
 -- Load library Obsidian
-local UI = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Source.lua"))()
+local UI = loadstring(game:HttpGet("https://raw.githubusercontent.com/amabar49-boop/Obsidian/main/Source.lua"))()
 
 -- Buat window utama
 local Main = UI:Window("Example") -- Nama window bisa diganti sesuai keinginan
