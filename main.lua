@@ -1,29 +1,23 @@
---// SilverHub Main (SAFE VERSION)
---// User: amabar49-boop
+--// SilverHub - Block Brainrot FIX
+print("SilverHub main started")
 
-print("SilverHub main.lua started")
+repeat task.wait() until game:IsLoaded()
 
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
-
--- Notif test
-pcall(function()
-	game:GetService("StarterGui"):SetCore("SendNotification", {
-		Title = "SilverHub",
-		Text = "Main.lua berjalan",
-		Duration = 5
-	})
-end)
 
 -- GUI
 local gui = Instance.new("ScreenGui")
 gui.Name = "SilverHubMain"
 gui.ResetOnSpawn = false
-gui.Parent = player:WaitForChild("PlayerGui")
+gui.IgnoreGuiInset = true
+
+-- IMPORTANT PART
+local parent = gethui and gethui() or game:GetService("CoreGui")
+gui.Parent = parent
 
 -- Main frame
-local main = Instance.new("Frame")
-main.Parent = gui
+local main = Instance.new("Frame", gui)
 main.Size = UDim2.fromScale(0.45, 0.4)
 main.Position = UDim2.fromScale(0.5, 0.5)
 main.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -31,32 +25,38 @@ main.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 main.BorderSizePixel = 0
 main.Visible = true
 
-Instance.new("UICorner", main).CornerRadius = UDim.new(0, 14)
+Instance.new("UICorner", main).CornerRadius = UDim.new(0, 16)
 
 -- Title
 local title = Instance.new("TextLabel", main)
 title.Size = UDim2.new(1, 0, 0.2, 0)
 title.BackgroundTransparency = 1
-title.Text = "SilverHub | amabar49-boop"
+title.Text = "SilverHub | Block Brainrot"
 title.Font = Enum.Font.GothamBold
 title.TextSize = 18
-title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.TextColor3 = Color3.fromRGB(255,255,255)
 
--- Button
+-- Test Button
 local btn = Instance.new("TextButton", main)
-btn.Size = UDim2.fromScale(0.8, 0.2)
-btn.Position = UDim2.fromScale(0.1, 0.6)
-btn.Text = "TEST BUTTON"
+btn.Size = UDim2.fromScale(0.8, 0.25)
+btn.Position = UDim2.fromScale(0.1, 0.5)
+btn.Text = "TEST FEATURE"
 btn.Font = Enum.Font.GothamBold
 btn.TextSize = 16
 btn.TextColor3 = Color3.fromRGB(255,255,255)
-btn.BackgroundColor3 = Color3.fromRGB(80, 80, 160)
+btn.BackgroundColor3 = Color3.fromRGB(90, 90, 170)
 btn.BorderSizePixel = 0
-
 Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 12)
 
 btn.MouseButton1Click:Connect(function()
-	print("Button clicked")
+	print("Button clicked in Block Brainrot")
 end)
 
-print("SilverHub main.lua finished loading")
+-- Notif
+pcall(function()
+	game:GetService("StarterGui"):SetCore("SendNotification", {
+		Title = "SilverHub",
+		Text = "Main UI berhasil muncul (Block Brainrot)",
+		Duration = 4
+	})
+end)
