@@ -2,7 +2,7 @@
 -- Obsidian UI
 -- github.com/USERNAME/REPO
 
-local BASE_URL = "https://raw.githubusercontent.com/silverhub/amabar49-boop/main/"
+local BASE_URL = "https://raw.githubusercontent.com/amabar49-boop/silverhub/main/"
 
 -- anti double execute
 if getgenv().FISHIT_LOADER then
