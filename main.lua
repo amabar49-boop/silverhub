@@ -1,30 +1,44 @@
--- Fish It Hub | Main UI (Obsidian)
-
+-- Load Obsidian Library
 local Obsidian = loadstring(game:HttpGet(
     "https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Obsidian.lua"
 ))()
 
+-- Create Window
 local Window = Obsidian:CreateWindow({
-    Title = "Fish It Hub",
-    Footer = "Silver Hub",
-    ToggleKey = Enum.KeyCode.RightShift
+    Title = "SilverHub | Fish It",
+    Footer = "by amabar49-boop",
+    ToggleKey = Enum.KeyCode.RightControl
 })
 
-local LoaderTab = Window:CreateTab("Loader", "home")
+-- Create Tab
+local MainTab = Window:AddTab({
+    Title = "Main",
+    Icon = "fish"
+})
 
-LoaderTab:AddButton({
-    Title = "Load Fish It Script",
-    Description = "Auto Fish • Auto Reel • AFK",
+-- Section
+local MainSection = MainTab:AddSection({
+    Title = "Fish It"
+})
+
+-- Button
+MainSection:AddButton({
+    Title = "Test Button",
+    Description = "Cek apakah UI muncul",
     Callback = function()
-        loadstring(game:HttpGet(
-            "https://raw.githubusercontent.com/amabar49-boop/silverhub/main/fishit.lua"
-        ))()
+        Obsidian:Notify({
+            Title = "SilverHub",
+            Content = "UI Obsidian berhasil muncul ✅",
+            Duration = 3
+        })
     end
 })
 
-LoaderTab:AddButton({
-    Title = "Unload UI",
-    Callback = function()
-        game:GetService("CoreGui").Obsidian:Destroy()
+-- Toggle
+MainSection:AddToggle({
+    Title = "Auto Fish (Dummy)",
+    Default = false,
+    Callback = function(v)
+        print("Auto Fish:", v)
     end
 })
