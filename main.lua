@@ -76,7 +76,7 @@ local Tab2 = TabBox:AddTab("Tab 2")
 -- You can now call AddToggle, etc on the tabs you added to the Tabbox
 ]]
 
--- Groupbox:AddToggle
+-- AutoPickaxe:AddToggle
 -- Arguments: Index, Options
 LeftGroupBox:AddToggle("MyToggle", {
 	Text = "This is a toggle",
