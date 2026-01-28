@@ -1,10 +1,9 @@
-print("SilverHub ANDROID DRAG UI START")
+print("SilverHub ANDROID DRAG FIX START")
 
 local Players = game:GetService("Players")
 local UIS = game:GetService("UserInputService")
 local player = Players.LocalPlayer
 
--- Clean UI lama
 pcall(function()
 	player.PlayerGui:FindFirstChild("SilverHubUI"):Destroy()
 end)
@@ -15,28 +14,27 @@ gui.Name = "SilverHubUI"
 gui.ResetOnSpawn = false
 gui.Parent = player.PlayerGui
 
--- ================= DRAG FUNCTION =================
+-- ================= DRAG FUNCTION (ANDROID FIX) =================
 local function makeDraggable(frame)
 	local dragging = false
-	local dragStart, startPos
+	local dragStart
+	local startPos
 
-	frame.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.Touch then
-			dragging = true
-			dragStart = input.Position
-			startPos = frame.Position
-		end
+	frame.MouseButton1Down:Connect(function()
+		dragging = true
+		dragStart = UIS:GetMouseLocation()
+		startPos = frame.Position
 	end)
 
-	frame.InputEnded:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.Touch then
+	UIS.InputEnded:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then
 			dragging = false
 		end
 	end)
 
 	UIS.InputChanged:Connect(function(input)
-		if dragging and input.UserInputType == Enum.UserInputType.Touch then
-			local delta = input.Position - dragStart
+		if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+			local delta = UIS:GetMouseLocation() - dragStart
 			frame.Position = UDim2.new(
 				startPos.X.Scale,
 				startPos.X.Offset + delta.X,
@@ -102,4 +100,4 @@ end
 floatBtn.MouseButton1Click:Connect(toggleMenu)
 closeBtn.MouseButton1Click:Connect(toggleMenu)
 
-print("SilverHub ANDROID DRAG UI LOADED")
+print("SilverHub ANDROID DRAG FIX LOADED")
